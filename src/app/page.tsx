@@ -2,7 +2,7 @@ import ProductCard from '../components/ProductCard'
 import ThemeToggle from '../components/ThemeToggle'
 
 async function getProducts() {
-  const res = await fetch(`/api/products`, { cache: 'no-store' })
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`, { cache: 'no-store' })
   if (!res.ok) throw new Error('Failed to fetch')
   return res.json()
 }

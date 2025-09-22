@@ -1,11 +1,14 @@
 import ProductCard from '../components/ProductCard'
 import ThemeToggle from '../components/ThemeToggle'
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+
 async function getProducts() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`, { cache: 'no-store' })
-  if (!res.ok) throw new Error('Failed to fetch')
-  return res.json()
+  const res = await fetch(`${baseUrl}/api/products`, { cache: 'no-store' });
+  if (!res.ok) throw new Error('Failed to fetch');
+  return res.json();
 }
+
 
 export default async function Page() {
   const products = await getProducts()
